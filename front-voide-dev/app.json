@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/videoinfo/videoinfo",
+    "pages/videotest/videotest",
+    "pages/index/index",
+    "pages/seek/seek",
+    "pages/userLogin/login",
+    "pages/mine/mine",
+    "pages/chooseBgm/chooseBgm",
+    "pages/userRegist/regist"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "急速视频",
+    "navigationBarTextStyle":"black"
+  }
+}

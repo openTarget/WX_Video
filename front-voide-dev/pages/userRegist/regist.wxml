@@ -1,0 +1,37 @@
+<view>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='width:427px;height:240px;' vertical="{{true}}">
+    <block wx:for='{{imgarray}}'>
+      <swiper-item class="login-icon">
+          <image class="login-img" src="{{item}}" ></image>
+      </swiper-item>
+    </block>
+    </swiper>
+    <view class="login-from">
+        <form bindsubmit='doRegist'>
+            <!--账号-->
+            <view class="inputView">
+                <image class="nameImage" src="../resource/images/username.png"></image>
+                <label class="loginLabel">账号</label>
+                <input name="username" class="inputText" placeholder="{{usernameplac}}" focus="{{true}}" confirm-type="next"/>
+            </view>
+            
+            <view class="line"></view>
+
+            <!--密码-->
+            <view class="inputView">
+                <image class="keyImage" src="../resource/images/password.png"></image>
+                <label class="loginLabel">密码</label>
+                <input name="password" class="inputText" password="true" placeholder="{{passwordplac}}" />
+            </view>
+
+            <!--按钮-->
+            <view>
+                <button class="loginBtn" type="primary" form-type='submit'>注册</button>
+            </view>
+
+            <view>
+                <button class="goLoginBtn" type="warn" bindtap="goLoginPage">返回登录</button>
+            </view>
+        </form>
+    </view>
+</view>
