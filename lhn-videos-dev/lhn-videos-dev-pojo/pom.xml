@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../lhn-videos-dev-mapper</module>
+    </modules>
+    <parent>
+        <groupId>com.lhn</groupId>
+        <artifactId>lhn-videos-dev</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>lhn-videos-dev-pojo</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.lhn</groupId>
+            <artifactId>lhn-videos-dev-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

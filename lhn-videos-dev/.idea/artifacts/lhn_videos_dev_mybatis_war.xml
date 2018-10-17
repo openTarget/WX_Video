@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lhn-videos-dev-mybatis:war">
+    <output-path>$PROJECT_DIR$/lhn-videos-dev-mybatis/target</output-path>
+    <root id="archive" name="lhn-videos-dev-mybatis-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="lhn-videos-dev-mybatis:war exploded" />
+    </root>
+  </artifact>
+</component>
