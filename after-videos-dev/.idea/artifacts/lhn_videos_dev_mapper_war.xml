@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lhn-videos-dev-mapper:war">
+    <output-path>$PROJECT_DIR$/lhn-videos-dev-mapper/target</output-path>
+    <root id="archive" name="lhn-videos-dev-mapper-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="lhn-videos-dev-mapper:war exploded" />
+    </root>
+  </artifact>
+</component>

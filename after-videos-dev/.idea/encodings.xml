@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-mapper" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-min-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-mybatis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lhn-videos-dev-service" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
