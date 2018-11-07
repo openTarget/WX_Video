@@ -19,7 +19,12 @@ public interface VideoService {
     public void updataVideo(String videoId, String coverPath);
 
     /**
-    *  分页插件
+    *  分页查询视频列表
     */
-    public PagedResult getAllVideos(Integer page, Integer pageSize);
+    public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize);
+
+    /**
+    *  获取热搜关键字
+    */
+    public List<String> getHotWords();
 }

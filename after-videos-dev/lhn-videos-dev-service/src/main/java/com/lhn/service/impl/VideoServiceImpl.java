@@ -13,9 +13,11 @@ package com.lhn.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lhn.mapper.SearchRecordsMapper;
 import com.lhn.mapper.VideosMapper;
 import com.lhn.mapper.VideosMapperCustom;
 import com.lhn.pojo.Bgm;
+import com.lhn.pojo.SearchRecords;
 import com.lhn.pojo.Videos;
 import com.lhn.pojo.vo.VideosVO;
 import com.lhn.service.VideoService;
@@ -50,6 +52,9 @@ public class VideoServiceImpl implements VideoService {
     @Autowired
     private VideosMapperCustom videosMapperCustom;
 
+    @Autowired
+    private SearchRecordsMapper searchRecordsMapper;
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public String saveVideo(Videos videos) {
@@ -68,10 +73,19 @@ public class VideoServiceImpl implements VideoService {
         videosMapper.updateVideoKeySelective(videos);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public PagedResult getAllVideos(Integer page, Integer pageSize) {
+    public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize) {
+        String desc = video.getVideoDesc();
+        if (isSaveRecord != null && isSaveRecord == 1) {
+            SearchRecords  record = new SearchRecords();
+            String recordId = sid.nextShort();
+            record.setId(recordId);
+            record.setContent(desc);
+            searchRecordsMapper.insert(record);
         PageHelper.startPage(page, pageSize);
-        List<VideosVO> list = videosMapperCustom.queryAllVideos();
+        }
+        List<VideosVO> list = videosMapperCustom.queryAllVideos(desc);
         PageInfo<VideosVO> pagelist = new PageInfo<>(list);
         PagedResult pagedResult = new PagedResult();
         pagedResult.setPage(page);
@@ -80,4 +94,12 @@ public class VideoServiceImpl implements VideoService {
         pagedResult.setRecords(pagelist.getTotal());
         return pagedResult;
     }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<String> getHotWords() {
+        List<String> hotwords = searchRecordsMapper.getHotwords();
+        return hotwords;
+    }
+
 }
