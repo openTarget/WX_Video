@@ -12,10 +12,7 @@ import io.swagger.annotations.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -23,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -218,16 +216,36 @@ public class VideoController extends BasicController{
         return IMoocJSONResult.ok();
     }
 
+    /**
+     * 功能描述: <br>
+     * 〈分页查询和热搜查询〉
+     *
+     * @param：isSaveRecord
+     *        1：保存
+     *        0：不保存
+     * @return:
+     * @since: 1.0.0
+     * @Author:lhn
+     * @Date: 2018/11/6 18:06
+     */
+    @ApiOperation(value = "分页查询和热词搜索分页查询", notes = "分页查询和热词搜索分页查询的方法")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page" , value = "当前页数", required = true, dataType = "String", paramType = "form"),
             @ApiImplicitParam(name = "bmgId" , value = "每一页的数量", required = true, dataType = "String", paramType = "form"),
     })
     @PostMapping(value = "/showAll")
-    public IMoocJSONResult showAll(Integer page, Integer pageSize){
+    public IMoocJSONResult showAll(@RequestBody Videos videos, Integer isSaveRecord, Integer page){
         if (page == null){
             page = 1;
         }
-        PagedResult allVideos = videoService.getAllVideos(page, PAGE_SIZE);
+        PagedResult allVideos = videoService.getAllVideos(videos, isSaveRecord, page, PAGE_SIZE);
         return IMoocJSONResult.ok(allVideos);
+    }
+
+    @ApiOperation(value = "用户热词", notes = "热词展现的方法")
+    @GetMapping(value = "/hot")
+    public IMoocJSONResult hot(){
+        List<String> hotWords = videoService.getHotWords();
+        return IMoocJSONResult.ok(hotWords);
     }
 }
